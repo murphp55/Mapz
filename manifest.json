@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Mapz",
+  "version": "0.2.0",
+  "description": "Detect addresses and places on the current page and open them in Google Maps.",
+  "permissions": ["storage", "tabs", "sidePanel", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_title": "Map addresses on this page"
+  },
+  "side_panel": {
+    "default_path": "map.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
